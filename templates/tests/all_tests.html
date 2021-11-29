@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}All Tests | ODLRS{% endblock %}
+
+{% block content %} 
+
+<div class="container inner-content">
+    <!-- search -->
+    <div class="search-box bg-dark p- mb-4 col-md-">
+        <div class="container">
+
+            <h3 class="text-white mb-">Detect Epilepsy Type</h3>
+
+            <form class="search" action="predict-Epilepsy/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="input-group input-group-sm">
+                    <input type="file" class="form-control" name='filePath' placeholder="Upload EEG Signal..."
+                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary" class="searchButton">
+                            Detect
+                        </button>
+                    </div>
+                </div>
+            </form>
+            </br></br></br>
+            
+            <h3 class="text-white mb-">Classification is: {{res}}</h3>
+           
+        </div>
+    </div>
+
+
+{% endblock %}
