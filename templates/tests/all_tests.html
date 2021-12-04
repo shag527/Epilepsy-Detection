@@ -4,16 +4,43 @@
 
 {% block content %} 
 
-<div class="container inner-content">
+<div class="container inner-content" >
     <!-- search -->
     <div class="search-box bg-dark p- mb-4 col-md-">
-        <div class="container">
+        <div class="container" >
 
-            <h3 class="text-white mb-">Detect Epilepsy Type</h3>
+            <h3 class="text-white mb-" >Detect Epilepsy Type</h3>
 
             <form class="search" action="predict-Epilepsy/" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="input-group input-group-sm">
+
+                {% comment %} <-- name, id, age, blood grp, phone number, email id,--> {% endcomment %}
+                   <form >
+                   <div style="width:100%"> 
+                   <label for="fname" style=" color:white;">Full name:</label><br>
+                    <input type="text" id="fname" name="fname" style=" color:red; width: 60%;padding: 1px 10px;margin: 8px 0;box-sizing: border-box;" ><br>
+                 </div>
+                  <div style="width:100%"> 
+                    <label for="fname" style=" color:white;">Id number:</label><br>
+                    <input type="text" id="idnum" name="idnum" style=" color:red; width: 60%;padding: 1px 10px;margin: 8px 0;box-sizing: border-box;"><br>
+                   </div>
+                    <div style="width:100%"> 
+                    <label for="fname" style=" color:white;">Age:</label><br>
+                    <input type="text" id="age" name="age" style=" color:red; width: 60%;padding: 1px 10px;margin: 8px 0;box-sizing: border-box;"><br>
+                    </div>
+                     <div style="width:100%"> 
+                    <label for="fname" style=" color:white;">Blood Group</label><br>
+                    <input type="text" id="bloodgrp" name="bloodgrp" style=" color:red; width: 60%;padding: 1px 10px;margin: 8px 0;box-sizing: border-box;"><br>
+                    <div style="width:100%"> 
+                    <label for="fname"  style=" color:white;">Contact number</label><br>
+                    <input type="text" id="phonenum" name="phonenum" style=" color:red; width: 60%;padding: 1px 10px;margin: 8px 0;box-sizing: border-box;"><br>
+                    </div>
+                     <div style="width:100%"> 
+                    <label for="fname" style=" color:white;">Email id</label><br>
+                    <input type="text" id="emailid" name="emailid" style=" color:red; width: 60%;padding: 1px 10px;margin: 8px 0;box-sizing: border-box;"><br>
+                    </div>
+                    </form>
                     <input type="file" class="form-control" name='filePath' placeholder="Upload EEG Signal..."
                         aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append">

@@ -7,9 +7,9 @@
 <div class="header-image">
     <div class="container">
         <div class="header-content">
-            <h1>ONLINE TEST</h1>
+            <h1>ONLINE EPILEPSY TEST</h1>
             <h2>booking</h2>
-            <h5>book now any kind of tests</h5>
+            <h5>book now epilepsy tests</h5>
 
             <a href="#welcome" class="btn"> get started <i class="fa fa-arrow-right pl-2"></i> </a>
         </div>
@@ -21,10 +21,10 @@
     <!-- search -->
     <div class="search-box bg-success p- my-4">
 
-        <div class="container">
+        {% comment %} <div class="container">
             <h3 class="text-white mb-">Search Tests</h3>
 
-            <form class="search" action="" method="GET">
+            {% comment %} <form class="search" action="" method="GET">
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control" name='q' placeholder="type any test's name..."
                         aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -33,10 +33,10 @@
                             SEARCH
                         </button>
                     </div>
-                </div>
-            </form>
+                </div> {% endcomment %}
+            {% comment %} </form>
 
-        </div>
+        </div> {% endcomment %} 
     </div>
     <!-- search end -->
 
@@ -58,7 +58,8 @@
     <h3 class="text-uppercase mt-3">all tests</h3>
     <hr>
     <!-- all tests -->
-    <div class="row mt-4">
+    
+    {% comment %} <div class="row mt-4">
         {% for test in all_tests_paginator_data %}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             <div class="card test-box">
@@ -85,7 +86,32 @@
             </div>
         </div>
         {% endfor %}
-    </div>
+    </div> {% endcomment %}
+    <p>
+     <h2> What is Epilepsy?</h2>
+     A disorder in which nerve cell activity in the brain is disturbed, causing seizures.
+
+     Epilepsy may occur as a result of a genetic disorder or an acquired brain injury, such as a trauma or stroke.
+
+    During a seizure, a person experiences abnormal behaviour, symptoms and sensations, sometimes including loss of consciousness. 
+
+    Epilepsy is usually treated by medication and in some cases by surgery, devices or dietary changes.
+<br>
+<br>
+    Epilepsy is the second most common brain disorder after migraine, affecting 1% of world’s population
+Seizure symptoms can vary widely-some simply stare blankly for a few seconds, while others repeatedly twitch their arms or legs.
+Currently, Electroencephalogram (EEG) is used in clinical studies to decode the electrical activity of the brain.
+<br>
+<br>
+Problems:<br>
+1. Visual inspection of EEG for seizure detection by expert neurologists is a time-consuming and laborious process, 
+<br>
+2. The diagnosis may not be accurate because of the massive amounts of EEG data and the discrepant clinical judgment standards of different neurologists.
+<br>
+Hence, the automatic identification of epilepsy has become an important issue. 
+
+
+    </p>
 
     <nav aria-label="Page navigation example">
         <ul class="pagination">

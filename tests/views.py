@@ -42,7 +42,7 @@ def all_tests(request, template_name='tests/all_tests.html'):
 def num_to_class(argument):
     switcher = {
         0: "Healthy",
-        1: "Interictal",
+        1: "Interictal", 
         2: "Seizure",
     }
     return switcher.get(argument, "nothing")
