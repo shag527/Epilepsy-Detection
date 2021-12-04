@@ -88,7 +88,7 @@ def predict_Epilepsy(request):
     post.test_result=result
     post.save()
 
-    return render(request,"tests/all_tests.html",{'res':res})
+    return render(request,"tests/test_results.html",{'res':res})
 
 ########################################################################################
 

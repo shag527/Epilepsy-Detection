@@ -84,36 +84,7 @@
     </div>
 
 
-<div class="container inner-content">
-    <!-- search -->
-    <div class="search-box bg-dark p- mb-4 col-md-">
-        <div class="container">
 
-            <h3 class="text-white mb-">EEG Signal Readings</h3>
-            
-            
-            {% for val in res %}
-                <h5 class="text-white mb-">{{val}}</h5>
-                {% if val == "Interictal" %}
-                    <div class="alert warning">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                    <strong>Alert!</strong> Currently in Interictal state.
-                    </div>
-                {% elif val == "Seizure"  %}
-                    <div class="alert">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                    <strong>Danger!</strong> Seizure Occuring.
-                    </div>
-                {% else %}
-                    <div class="alert success">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                    <strong>Yayy!</strong> Currently in healthy state.
-                    </div>
-                {% endif %}
-            {% endfor %}
-           
-        </div>
-    </div>
 
 
 
