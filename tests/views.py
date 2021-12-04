@@ -8,7 +8,7 @@ from django.core.files.storage import FileSystemStorage
 from custom_users.models import Profile
 from diagnostic_centers.models import DiagnosticAdmin, DiagnosticStaff, DiagnosticCenter
 
-from .models import Test, TestCategory, TestOrder
+from .models import Test, TestCategory, TestOrder, Patient_Profile
 from .forms import TestOrderForm, TestAddForm, CategoryAddForm
 
 from tensorflow.keras.models import load_model
@@ -49,6 +49,11 @@ def num_to_class(argument):
 
 def predict_Epilepsy(request):
     res=[]
+    result=""
+    
+
+    #print(name,id_no,age,blood_gp,phone_no,email_id)
+
     for file_obj in request.FILES.getlist('filePath'):
         #file_obj=request.FILES['filePath']
         fs=FileSystemStorage()
@@ -67,7 +72,22 @@ def predict_Epilepsy(request):
         pred_class=num_to_class(pred[0])
         res.append(pred_class)
 
-    print(res)
+
+    if 'Interictal' in res or 'Seizure' in res:
+        result+='Epileptic'
+    else:
+        result+='Healthy'
+
+    post=Patient_Profile()
+    post.name=request.POST['fname']
+    post.id_no=request.POST['idnum']
+    post.age=request.POST['age']
+    post.blood_gp=request.POST['bloodgrp']
+    post.contact_no=request.POST['phonenum']
+    post.email_id=request.POST['emailid']
+    post.test_result=result
+    post.save()
+
     return render(request,"tests/all_tests.html",{'res':res})
 
 ########################################################################################

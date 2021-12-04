@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import (
 
+    Patient_Profile,
     TestCategory,
     Test,
     TestOrder,
@@ -38,5 +39,6 @@ class TestOrderAdmin(admin.ModelAdmin):
 admin.site.register(TestCategory, TestCategoryAdmin)
 admin.site.register(Test, TestAdmin)
 admin.site.register(TestOrder, TestOrderAdmin)
+admin.site.register(Patient_Profile)
 
 

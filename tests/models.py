@@ -1,8 +1,22 @@
 from django.db import models
 from django.utils import timezone
-
 from diagnostic_centers.models import DiagnosticCenter
 from custom_users.models import Profile
+from django.contrib.auth.models import User
+
+
+class Patient_Profile(models.Model):
+    name = models.CharField(max_length=250)
+    id_no = models.IntegerField()
+    age = models.IntegerField()
+    contact_no = models.CharField(max_length=14, blank=True, null=True)
+    blood_gp = models.CharField(max_length=150, blank=True, null=True)
+    email_id= models.CharField(max_length=100)
+    test_result= models.CharField(max_length=15)
+
+
+    def __str__(self):
+        return self.name
 
 
 class TestCategory(models.Model):
