@@ -3,6 +3,36 @@
 {% block title %}All Tests | ODLRS{% endblock %}
 
 {% block content %} 
+<style>
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.alert.success {background-color: #04AA6D;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+</style>
 
 <div class="container inner-content" >
     <!-- search -->
@@ -42,20 +72,49 @@
                     </div>
                     </form>
                     <input type="file" class="form-control" name='filePath' placeholder="Upload EEG Signal..."
-                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        aria-label="Recipient's username" aria-describedby="basic-addon2" multiple>
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary" class="searchButton">
                             Detect
                         </button>
                     </div>
                 </div>
-            </form>
-            </br></br></br>
+            </form>           
+        </div>
+    </div>
+
+
+<div class="container inner-content">
+    <!-- search -->
+    <div class="search-box bg-dark p- mb-4 col-md-">
+        <div class="container">
+
+            <h3 class="text-white mb-">EEG Signal Readings</h3>
             
-            <h3 class="text-white mb-">Classification is: {{res}}</h3>
+            
+            {% for val in res %}
+                <h5 class="text-white mb-">{{val}}</h5>
+                {% if val == "Interictal" %}
+                    <div class="alert warning">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <strong>Alert!</strong> Currently in Interictal state.
+                    </div>
+                {% elif val == "Seizure"  %}
+                    <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <strong>Danger!</strong> Seizure Occuring.
+                    </div>
+                {% else %}
+                    <div class="alert success">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <strong>Yayy!</strong> Currently in healthy state.
+                    </div>
+                {% endif %}
+            {% endfor %}
            
         </div>
     </div>
+
 
 
 {% endblock %}

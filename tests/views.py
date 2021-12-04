@@ -48,23 +48,27 @@ def num_to_class(argument):
     return switcher.get(argument, "nothing")
 
 def predict_Epilepsy(request):
-    file_obj=request.FILES['filePath']
-    fs=FileSystemStorage()
-    file=fs.save(file_obj.name,file_obj)
-    filepath='.'+fs.url(file)
+    res=[]
+    for file_obj in request.FILES.getlist('filePath'):
+        #file_obj=request.FILES['filePath']
+        fs=FileSystemStorage()
+        file=fs.save(file_obj.name,file_obj)
+        filepath='.'+fs.url(file)
 
-    data=pd.read_csv(filepath)
-    data=data.iloc[:,1:179].values
+        data=pd.read_csv(filepath)
+        data=data.iloc[:,1:179].values
 
-    scaler = StandardScaler()
-    data=scaler.fit_transform(data.T)
-    data = np.reshape(data, (data.shape[1],1,data.shape[0]))
+        scaler = StandardScaler()
+        data=scaler.fit_transform(data.T)
+        data = np.reshape(data, (data.shape[1],1,data.shape[0]))
 
-    pred=model.predict(data)
-    pred=np.argmax(pred,axis=1)
-    pred_class=num_to_class(pred[0])
+        pred=model.predict(data)
+        pred=np.argmax(pred,axis=1)
+        pred_class=num_to_class(pred[0])
+        res.append(pred_class)
 
-    return render(request,"tests/all_tests.html",{'res':pred_class})
+    print(res)
+    return render(request,"tests/all_tests.html",{'res':res})
 
 ########################################################################################
 
