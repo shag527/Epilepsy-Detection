@@ -14,9 +14,10 @@ from .forms import TestOrderForm, TestAddForm, CategoryAddForm
 from tensorflow.keras.models import load_model
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import StandardScaler
+import pickle
 ########################################################################################
 model=load_model("./models/epilepsy.h5")
+scaler=pickle.load(open('./models/scaler.pkl','rb'))
 
 def all_tests(request, template_name='tests/all_tests.html'):
     all_test_list = Test.objects.all().order_by('-id')
@@ -41,9 +42,9 @@ def all_tests(request, template_name='tests/all_tests.html'):
 
 def num_to_class(argument):
     switcher = {
-        0: "Healthy",
+        0: "Seizure",
         1: "Interictal", 
-        2: "Seizure",
+        2: "Healthy",
     }
     return switcher.get(argument, "nothing")
 
@@ -62,17 +63,20 @@ def predict_Epilepsy(request):
 
         data=pd.read_csv(filepath)
         data=data.iloc[:,1:179].values
+        # print(data.shape)
+        # print(data)
 
-        scaler = StandardScaler()
         data=scaler.fit_transform(data.T)
         data = np.reshape(data, (data.shape[1],1,data.shape[0]))
+        #print(data)
+
 
         pred=model.predict(data)
         pred=np.argmax(pred,axis=1)
         pred_class=num_to_class(pred[0])
         res.append(pred_class)
 
-
+    # print(res)
     if 'Interictal' in res or 'Seizure' in res:
         result+='Epileptic'
     else:
