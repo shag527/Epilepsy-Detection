@@ -253,7 +253,7 @@ def staff_logout(request):
 
 def center_details(request, id=id):
     single_center = DiagnosticCenter.objects.get(id=id)
-    tests_by_center = Test.objects.filter(center__id=id)
+    tests_by_center = Test.objects.filter(center__id=id) 
 
     template = 'diagnostic_centers/center_details.html'
 

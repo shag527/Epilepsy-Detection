@@ -15,8 +15,16 @@ from tensorflow.keras.models import load_model
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
+
+from .models import Patient_Profile
 ########################################################################################
 model=load_model("./models/epilepsy.h5")
+
+def all_data(request):
+    event_list = Patient_Profile.objects.all()
+
+    return render(request, 'tests/new.html', {'event_list': event_list})
+    
 
 def all_tests(request, template_name='tests/all_tests.html'):
     all_test_list = Test.objects.all().order_by('-id')

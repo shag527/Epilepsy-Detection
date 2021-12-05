@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}All Tests Details | ODLRS{% endblock %}
+
+{% block content %} 
+<style>
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.alert.success {background-color: #04AA6D;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+</style>
+
+<h2>All Patient's Details</h2>
+
+<table style="border: 1px solid black;"," width=70%;">
+         <tr>
+            <th>Name     </th>
+            <th>ID Number  </th>
+            <th>Age </th>
+            <th>Contact No. </th>
+            <th>Blood Group</th>
+            <th>Email Id</th>
+            <th>Test Results</th>
+         </tr>
+        
+    
+{% for event in event_list %}
+
+<strong>{{ event }}</strong>
+ <ul>
+
+ <li> {{ event }} </li>
+
+ </ul>
+{% comment %} <-- name, id, age, blood grp, phone number, email id,-->
+  name = models.CharField(max_length=250)
+    id_no = models.IntegerField()
+    age = models.IntegerField()
+    contact_no = models.CharField(max_length=14, blank=True, null=True)
+    blood_gp = models.CharField(max_length=150, blank=True, null=True)
+    email_id= models.CharField(max_length=100)
+    test_result= models.CharField(max_length=15) {% endcomment %}
+  <tr>
+            <td>{{ event.name }}</td>
+            <td>{{ event.id_no }}</td>
+            <td>{{ event.age }}</td>
+            <td>{{ event.contact_no }}</td>
+            <td>{{ event.blood_gp }}</td>
+            <td>{{ event.email_id }}</td>
+            <td>{{ event.test_result}}</td>
+
+            
+         </tr>
+{% endfor%}
+
+  </table>
+
+
+{% endblock %}

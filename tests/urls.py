@@ -4,6 +4,8 @@ from django.conf import settings
 
 from .views import (
 
+    all_data,
+    
     all_tests,
     predict_Epilepsy,
     test_details,
@@ -54,6 +56,8 @@ urlpatterns = [
     path('categorise-tests/<int:id>/', categorise_tests, name='categorise-tests'),
 
     path('test-details/<int:id>/', test_details, name='test-details'),
+
+    path('tests_data/',all_data,name='list-datas'),
 
     path('order/<int:id>/', test_order, name='order'),
 
