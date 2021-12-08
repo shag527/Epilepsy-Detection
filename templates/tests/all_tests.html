@@ -44,11 +44,9 @@
             <form class="search" action="predict-Epilepsy/" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="input-group input-group-sm">
-
-                {% comment %} <-- name, id, age, blood grp, phone number, email id,--> {% endcomment %}
                    <form >
                    <div style="width:100%"> 
-                   <label for="fname" style=" color:white;">Full name:</label><br>
+                   <label for="fname" style=" color:white;">Patient's name:</label><br>
                     <input type="text" id="fname" name="fname" style=" color:red; width: 60%;padding: 1px 10px;margin: 8px 0;box-sizing: border-box;" ><br>
                  </div>
                   <div style="width:100%"> 
