@@ -34,6 +34,8 @@
 
 </style>
 
+<br><br><br><br>
+<center>
 <h2>All Patient's Details</h2>
 
 <table style="border: 1px solid black;"," width=70%;">
@@ -50,12 +52,7 @@
     
 {% for event in event_list %}
 
-<strong>{{ event }}</strong>
- <ul>
-
- <li> {{ event }} </li>
-
- </ul>
+<br><br>
 {% comment %} <-- name, id, age, blood grp, phone number, email id,-->
   name = models.CharField(max_length=250)
     id_no = models.IntegerField()
@@ -78,6 +75,6 @@
 {% endfor%}
 
   </table>
-
-
+  </center>
+<br><br><br><br><br><br><br><br>
 {% endblock %}

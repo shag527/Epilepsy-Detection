@@ -9,7 +9,4 @@ class PaymentValidationAdmin(admin.ModelAdmin):
     # list_display_links = ['approved_order']
 
 
-admin.site.register(PaymentValidation, PaymentValidationAdmin)
-
-
 

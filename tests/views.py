@@ -14,13 +14,10 @@ from .forms import TestOrderForm, TestAddForm, CategoryAddForm
 from tensorflow.keras.models import load_model
 import pandas as pd
 import numpy as np
-<<<<<<< HEAD
 from sklearn.preprocessing import StandardScaler
 
 from .models import Patient_Profile
-=======
 import pickle
->>>>>>> e98e15d3d447a02fdae99cc78f3d1bc01f96174a
 ########################################################################################
 model=load_model("./models/epilepsy.h5")
 scaler=pickle.load(open('./models/scaler.pkl','rb'))
